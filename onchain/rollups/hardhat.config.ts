@@ -20,6 +20,7 @@ import {
     optimism,
     optimismSepolia,
     sepolia,
+    rolluxTestnet,
 } from "viem/chains";
 
 // read MNEMONIC from env variable
@@ -62,6 +63,7 @@ const config: HardhatUserConfig = {
         sepolia: networkConfig(sepolia),
         optimism: networkConfig(optimism),
         optimism_sepolia: networkConfig(optimismSepolia),
+        rollux_testnet: networkConfig(rolluxTestnet),
     },
     solidity: {
         version: "0.8.23",
@@ -81,6 +83,9 @@ const config: HardhatUserConfig = {
         // https://github.com/safe-global/safe-singleton-factory
         const chainId = parseInt(network);
         const info = getSingletonFactoryInfo(chainId);
+        console.log('chainId', chainId)
+        console.log('info', info)
+        // process.exit(0)
         if (info) {
             return {
                 factory: info.address,
@@ -152,5 +157,8 @@ const config: HardhatUserConfig = {
         enabled: process.env.REPORT_GAS ? true : false,
     },
 };
+
+
+
 
 export default config;
