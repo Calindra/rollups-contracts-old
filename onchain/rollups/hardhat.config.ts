@@ -83,9 +83,6 @@ const config: HardhatUserConfig = {
         // https://github.com/safe-global/safe-singleton-factory
         const chainId = parseInt(network);
         const info = getSingletonFactoryInfo(chainId);
-        console.log('chainId', chainId)
-        console.log('info', info)
-        // process.exit(0)
         if (info) {
             return {
                 factory: info.address,
